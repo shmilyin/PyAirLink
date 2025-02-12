@@ -3,7 +3,7 @@ SQLITE = database.sqlite
 
 [SERIAL]
 PORT = /dev/ttyACM0
-BAUD_RATE = 115200
+BAUD_RATE = 921600
 TIMEOUT = 1
 
 [SERVERCHAN]
@@ -17,5 +17,16 @@ PASSWORD = password
 MAIL_TO = example@qq.com
 TLS = false
 
+[FEISHU_WEBHOOK]
+WEBHOOK_URL = 
+SECRET = 
+
+[WECOM_APP]
+URL = https://qyapi.weixin.qq.com
+CORPID = 
+CORPSECRET = 
+AGENTID = 
+TOUSER = 
+
 [NOTIFICATION]
-CHANNELS = serverchan, mail
+CHANNELS = feishu_webhook, wecom_app

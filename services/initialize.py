@@ -3,7 +3,7 @@ import time
 import logging
 from zoneinfo import ZoneInfo
 
-from services.notification import serverchan, send_email
+from services.notification import serverchan, send_email, feishu_webhook, wecom_app
 from services.utils.config_parser import config
 from services.utils.serial_manager import SerialManager
 from .utils.sms import parse_pdu, encode_pdu
@@ -91,11 +91,11 @@ def handle_sms(phone_number, sms_content, receive_time, tz="Asia/Shanghai"):
     处理接收到的短信
     """
     logger.info(f"在{receive_time}收到短信来自 {phone_number}，内容: {sms_content}")
-    channels = {'serverchan': serverchan,'mail': send_email}
+    channels = {'serverchan': serverchan,'mail': send_email, 'feishu_webhook': feishu_webhook, "wecom_app": wecom_app}
     use_channels = config.notification()
     if use_channels:
-        title = f'new sms from {phone_number}'
-        content = f'receive time: {receive_time.astimezone(ZoneInfo(tz))},\ncontent: {sms_content}'
+        title = f'收到来自 {phone_number} 的短信'
+        content = f'时间: {receive_time.astimezone(ZoneInfo(tz))},\n内容: {sms_content}'
         for channel in use_channels:
             func = channels[channel]
             try:

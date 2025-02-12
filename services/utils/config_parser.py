@@ -31,6 +31,20 @@ class Config:
         tls = self.config.getboolean('MAIL', 'TLS')
         return {'smtp_server': smtp_server, 'smtp_port': smtp_port, 'account': account, 'password': password, 'mail_to': mail_to, 'tls': tls}
 
+    def feishu_webhook(self):
+        webhook_url = self.config.get('FEISHU_WEBHOOK', 'WEBHOOK_URL')
+        secret = self.config.get('FEISHU_WEBHOOK', 'SECRET')
+        return {'webhook_url': webhook_url, 'secret': secret}
+
+    def wecom_app(self):
+        url = self.config.get('WECOM_APP', 'URL')
+        corpid = self.config.get('WECOM_APP', 'CORPID')
+        corpsecret = self.config.get('WECOM_APP', 'CORPSECRET')
+        agentid = self.config.get('WECOM_APP', 'AGENTID')
+        touser = self.config.get('WECOM_APP', 'TOUSER')
+        return {'url': url, 'corpid': corpid, 'corpsecret': corpsecret, 'agentid': agentid, 'touser': touser}
+
+
     def notification(self):
         channels = self.config.get('NOTIFICATION', 'CHANNELS').split(',')
         return [channel.strip() for channel in channels] if channels else []
