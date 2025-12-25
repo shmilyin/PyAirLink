@@ -27,6 +27,19 @@ class Config:
         key = self.config.get('BARK', 'KEY')
         return {'url': url, 'key': key}
 
+    def feishu_webhook(self):
+        webhook_url = self.config.get('FEISHU_WEBHOOK', 'WEBHOOK_URL')
+        secret = self.config.get('FEISHU_WEBHOOK', 'SECRET')
+        return {'webhook_url': webhook_url, 'secret': secret}
+
+    def wecom_app(self):
+        url = self.config.get('WECOM_APP', 'URL')
+        corpid = self.config.get('WECOM_APP', 'CORPID')
+        corpsecret = self.config.get('WECOM_APP', 'CORPSECRET')
+        agentid = self.config.get('WECOM_APP', 'AGENTID')
+        touser = self.config.get('WECOM_APP', 'TOUSER')
+        return {'url': url, 'corpid': corpid, 'corpsecret': corpsecret, 'agentid': agentid, 'touser': touser}
+
     def mail(self):
         smtp_server = self.config.get('MAIL', 'SMTP_SERVER')
         smtp_port = self.config.getint('MAIL', 'SMTP_PORT')

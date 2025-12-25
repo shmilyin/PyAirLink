@@ -21,5 +21,16 @@ PASSWORD = password
 MAIL_TO = example@qq.com
 TLS = false
 
+[FEISHU_WEBHOOK]
+WEBHOOK_URL = 
+SECRET = 
+
+[WECOM_APP]
+URL = https://qyapi.weixin.qq.com
+CORPID = 
+CORPSECRET = 
+AGENTID = 
+TOUSER = 
+
 [NOTIFICATION]
 CHANNELS = serverchan, mail, bark
